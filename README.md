@@ -20,10 +20,6 @@ It allows users to:
 <br>🧠 Get a Cyber Safety Score (0–100)
 </p>
 
-<p>
-The goal of this project is to make cybersecurity <b>easy, accessible, and understandable</b> for everyone.
-</p>
-
 <hr>
 
 <h2>🚀 How I Built This Project</h2>
@@ -35,73 +31,107 @@ The goal of this project is to make cybersecurity <b>easy, accessible, and under
 </p>
 
 <p><b>Step 2: First Flask App</b><br>
-- Ran a basic server<br>
-- Displayed "Hello World"
+- Ran server and displayed "Hello World"
 </p>
 
 <p><b>Step 3: HTML Integration</b><br>
 - Created <code>templates</code> folder<br>
 - Added <code>index.html</code><br>
-- Used <code>render_template()</code>
+- Connected using <code>render_template()</code>
 </p>
 
 <p><b>Step 4: Form Handling</b><br>
-- Added input fields<br>
+- Added inputs (password, URL, message)<br>
 - Used POST method<br>
-- Captured data using <code>request.form</code>
+- Captured using <code>request.form</code>
 </p>
 
-<p><b>Step 5: Password Checker</b><br>
-- Created <code>password.py</code><br>
-- Implemented strength logic
+<p><b>Step 5: Feature Development</b><br>
+- Password checker<br>
+- URL checker<br>
+- Scam detector
 </p>
 
-<p><b>Step 6: URL Checker</b><br>
-- Created <code>url_checker.py</code><br>
-- Checked HTTPS & keywords
+<p><b>Step 6: Score System</b><br>
+- Combined results into cyber safety score
 </p>
 
-<p><b>Step 7: Scam Detector</b><br>
-- Created <code>scam_detector.py</code><br>
-- Used keyword-based detection
+<p><b>Step 7: UI Improvements</b><br>
+- Styled using CSS<br>
+- Added clean layout
 </p>
 
-<p><b>Step 8: Cyber Safety Score</b><br>
-- Created <code>score.py</code><br>
-- Combined all results
-</p>
-
-<p><b>Step 9: UI Improvement</b><br>
-- Added styling using CSS<br>
-- Improved layout
-</p>
-
-<p><b>Step 10: Recommendations</b><br>
-- Added smart suggestions for users
+<p><b>Step 8: Recommendations</b><br>
+- Added user suggestions
 </p>
 
 <hr>
 
-<h2>⚠️ Errors I Faced & Solutions</h2>
+<h2>⚠️ Errors Faced & Fixes</h2>
 
 <p><b>❌ TemplateNotFound Error</b><br>
-Flask couldn’t find <code>index.html</code><br>
-<b>✔ Fix:</b> Created <code>templates</code> folder and moved file inside it
+Flask couldn't find <code>index.html</code><br>
+✔ Fixed by placing it inside <code>templates</code> folder
 </p>
 
-<p><b>❌ GitHub Push Rejected</b><br>
-Remote repo had existing files<br>
-<b>✔ Fix:</b> Used <code>git pull origin main --allow-unrelated-histories</code>
+<p><b>❌ Git Push Rejected</b><br>
+Error: <code>main -> main (fetch first)</code><br>
+✔ Fixed using:
+<pre>git pull origin main --rebase</pre>
+Then pushing again
 </p>
 
-<p><b>❌ Merge Issue</b><br>
-Merge not completed (MERGE_HEAD)<br>
-<b>✔ Fix:</b> Ran <code>git commit</code> then pushed again
+<p><b>❌ Merge Error</b><br>
+Error: <code>MERGE_HEAD exists</code><br>
+✔ Fixed using:
+<pre>git commit -m "Merged changes"</pre>
 </p>
 
 <p><b>❌ File Extension Issue</b><br>
-Files saved as .txt<br>
-<b>✔ Fix:</b> Enabled file extensions and corrected names
+Files were saved as .txt<br>
+✔ Fixed by enabling file extensions
+</p>
+
+<hr>
+
+<h2>🌐 Deployment (Render)</h2>
+
+<p><b>Step 1: Added Deployment Files</b></p>
+<pre>
+requirements.txt
+Procfile
+</pre>
+
+<p><b>requirements.txt:</b></p>
+<pre>
+flask
+gunicorn
+</pre>
+
+<p><b>Procfile:</b></p>
+<pre>
+web: gunicorn app:app
+</pre>
+
+<p><b>Step 2: Updated app.py</b></p>
+<pre>
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
+</pre>
+
+<p><b>Step 3: Pushed Code to GitHub</b></p>
+
+<p><b>Step 4: Deployed using Render</b><br>
+- Connected GitHub repo<br>
+- Selected Python environment<br>
+- Build command:
+<pre>pip install -r requirements.txt</pre>
+- Start command:
+<pre>gunicorn app:app</pre>
+</p>
+
+<p>
+After deployment, the app is available as a live website 🌐
 </p>
 
 <hr>
@@ -135,6 +165,8 @@ CSS
 cyber-dashboard/
 │
 ├── app.py
+├── requirements.txt
+├── Procfile
 ├── templates/
 │     └── index.html
 ├── utils/
@@ -163,22 +195,11 @@ http://127.0.0.1:5000/
 <h2>🎯 What I Learned</h2>
 
 <p>
-- Flask basics<br>
-- Frontend + Backend connection<br>
-- Handling user input<br>
-- Debugging errors<br>
-- Using Git & GitHub
-</p>
-
-<hr>
-
-<h2>🚀 Future Improvements</h2>
-
-<p>
-- AI-based detection<br>
-- Live deployment<br>
-- Better UI/UX<br>
-- Mobile support
+- Flask fundamentals<br>
+- Full-stack basics<br>
+- Debugging real errors<br>
+- Git & GitHub workflow<br>
+- Deployment process
 </p>
 
 <hr>
@@ -187,7 +208,7 @@ http://127.0.0.1:5000/
 
 <p>
 Hi, I’m <b>Bhavi Bishnoi</b> 👋<br>
-Currently learning cybersecurity and development.
+Exploring cybersecurity and development.
 </p>
 
 <hr>
@@ -195,5 +216,5 @@ Currently learning cybersecurity and development.
 <h2>🙌 Final Note</h2>
 
 <p>
-This project is a step towards making people more aware of their digital safety.
+This project helped me understand how real-world applications are built, debugged, and deployed.
 </p>

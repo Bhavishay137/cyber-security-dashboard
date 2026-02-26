@@ -26,7 +26,7 @@ def home():
 
         final_score = calculate_score(strength, url_result, scam_result)
 
-        # 🔥 Recommendations
+        # Recommendations
         if strength == "Weak":
             recommendations.append("Use a stronger password with symbols and numbers")
 

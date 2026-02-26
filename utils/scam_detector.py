@@ -7,8 +7,8 @@ def detect_scam(message):
     score = sum(word in message.lower() for word in keywords)
 
     if score >= 3:
-        return "🚨 Scam Detected (High Risk)"
+        return "🚨 High Risk Scam (AI Detected)"
     elif score == 2:
-        return "⚠️ Suspicious Message"
+        return "⚠️ Medium Risk Suspicious"
     else:
         return "✅ Safe Message"

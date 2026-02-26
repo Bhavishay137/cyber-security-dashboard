@@ -6,7 +6,7 @@ def calculate_score(password_strength, url_result, scam_result):
     elif password_strength == "Moderate":
         score -= 15
 
-    if "Unsafe" in url_result:
+    if "Risk" in url_result or "Unsafe" in url_result:
         score -= 30
     elif "Suspicious" in url_result:
         score -= 15

@@ -15,3 +15,15 @@ def check_password(password):
     strength = ["Weak", "Moderate", "Strong", "Very Strong"]
 
     return strength[min(score, 3)]
+
+def crack_time(password):
+    length = len(password)
+
+    if length <= 5:
+        return "Instantly crackable ⚠️"
+    elif length <= 8:
+        return "Few minutes ⏳"
+    elif length <= 12:
+        return "Few days 🕒"
+    else:
+        return "Years 🔐"

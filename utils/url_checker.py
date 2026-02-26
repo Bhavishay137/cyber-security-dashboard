@@ -1,11 +1,27 @@
+import re
+
 def check_url(url):
     if not url:
         return "No URL provided"
 
+    score = 0
+
     if not url.startswith("https"):
-        return "⚠️ Unsafe (No HTTPS)"
+        score += 2
 
-    if "login" in url or "verify" in url:
-        return "⚠️ Suspicious (Phishing keywords detected)"
+    if len(url) > 50:
+        score += 1
 
-    return "✅ Safe Website"
+    if re.search(r"\d+\.\d+\.\d+\.\d+", url):
+        score += 2
+
+    keywords = ["login", "verify", "bank", "secure", "update"]
+    if any(word in url.lower() for word in keywords):
+        score += 2
+
+    if score >= 4:
+        return "🚨 High Risk URL"
+    elif score >= 2:
+        return "⚠️ Suspicious URL"
+    else:
+        return "✅ Safe URL"

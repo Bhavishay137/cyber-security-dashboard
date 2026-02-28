@@ -1,14 +1,17 @@
 def detect_scam(message):
-    if not message:
-        return "No message"
+    keywords = ["urgent", "win", "click", "verify", "bank"]
 
-    keywords = ["urgent", "win", "prize", "click", "verify", "bank"]
+    found = [k for k in keywords if k in message.lower()]
+    risk = len(found) * 20
 
-    score = sum(word in message.lower() for word in keywords)
-
-    if score >= 3:
-        return "🚨 High Risk Scam"
-    elif score == 2:
-        return "⚠️ Suspicious Message"
+    if risk >= 60:
+        status = "🚨 High Risk"
+    elif risk >= 30:
+        status = "⚠️ Suspicious"
     else:
-        return "✅ Safe Message"
+        status = "✅ Safe"
+
+    return {
+        "status": status,
+        "risk": min(risk, 100)
+    }

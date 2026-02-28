@@ -1,19 +1,31 @@
-def calculate_score(password_strength, url_result, scam_result):
-    score = 100
+def password_score(strength):
+    if strength == "Very Strong":
+        return 95
+    elif strength == "Strong":
+        return 75
+    elif strength == "Moderate":
+        return 50
+    else:
+        return 20
 
-    if password_strength == "Weak":
-        score -= 30
-    elif password_strength == "Moderate":
-        score -= 15
 
-    if "Risk" in url_result or "Unsafe" in url_result:
-        score -= 30
-    elif "Suspicious" in url_result:
-        score -= 15
+def url_score(url_data):
+    if not url_data:
+        return 0
 
-    if "Scam" in scam_result:
-        score -= 30
-    elif "Suspicious" in scam_result:
-        score -= 15
+    status = url_data.get("status", "")
 
-    return max(score, 0)
+    if "HIGH RISK" in status:
+        return 20
+    elif "SUSPICIOUS" in status:
+        return 50
+    else:
+        return 90
+
+
+def message_score(message_data):
+    if not message_data:
+        return 0
+
+    risk = message_data.get("risk", 0)
+    return max(100 - risk, 0)

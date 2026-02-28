@@ -1,5 +1,9 @@
 import re
+import random
+import string
 
+
+# 🔍 CHECK PASSWORD STRENGTH
 def check_password(password):
     score = 0
 
@@ -12,18 +16,55 @@ def check_password(password):
     if re.search("[@#$%^&+=]", password):
         score += 1
 
-    strength = ["Weak", "Moderate", "Strong", "Very Strong"]
+    strength_levels = ["Weak", "Moderate", "Strong", "Very Strong"]
+    return strength_levels[min(score, 3)]
 
-    return strength[min(score, 3)]
 
+# ⏳ SMART CRACK TIME (ONLY ONE UNIT)
 def crack_time(password):
-    length = len(password)
+    guesses = 94 ** len(password)
+    seconds = int(guesses / 1e9)
 
-    if length <= 5:
-        return "Instantly crackable ⚠️"
-    elif length <= 8:
-        return "Few minutes ⏳"
-    elif length <= 12:
-        return "Few days 🕒"
+    if seconds < 60:
+        return f"{seconds} seconds"
+
+    minutes = seconds // 60
+    if minutes < 60:
+        return f"{minutes} minutes"
+
+    hours = minutes // 60
+    if hours < 24:
+        return f"{hours} hours"
+
+    days = hours // 24
+    if days < 30:
+        return f"{days} days"
+
+    months = days // 30
+    if months < 12:
+        return f"{months} months"
+
+    years = months // 12
+    return f"{years} years"
+
+
+# 💡 SUGGEST STRONG PASSWORD
+def suggest_password(password):
+    chars = string.ascii_letters + string.digits + "@#$%^&*"
+    return ''.join(random.choice(chars) for _ in range(12))
+
+
+# ✅ USABILITY CHECK
+def usability(strength):
+    if strength == "Weak":
+        return "❌ Not Safe"
+    elif strength == "Moderate":
+        return "⚠️ Risky"
     else:
-        return "Years 🔐"
+        return "✅ Safe"
+
+
+# 🔐 GENERATE STRONG PASSWORD
+def generate_password():
+    chars = string.ascii_letters + string.digits + "@#$%^&*"
+    return ''.join(random.choice(chars) for _ in range(14))

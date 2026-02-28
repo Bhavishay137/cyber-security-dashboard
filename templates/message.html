@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Message Analyzer</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #020617);
+    color: white;
+    text-align: center;
+}
+
+a {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+/* INPUT DESIGN */
+.chain-box {
+    display: inline-block;
+    padding: 6px;
+    margin-top: 60px;
+    background: repeating-linear-gradient(
+        45deg,
+        #64748b,
+        #64748b 6px,
+        #1e293b 6px,
+        #1e293b 12px
+    );
+    border-radius: 15px;
+}
+
+.inner-box {
+    background: #111827;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+textarea {
+    padding: 12px;
+    border: none;
+    width: 280px;
+    height: 120px;
+    background: #1e293b;
+    color: white;
+    border-radius: 8px;
+}
+
+/* BUTTON */
+button {
+    padding: 10px 15px;
+    margin: 15px;
+    background: #0ea5e9;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0284c7;
+}
+
+/* RESULT CARD */
+.card {
+    background: #111827;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 12px;
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>
+
+</head>
+
+<body>
+
+<a href="/">⬅ Back</a>
+
+<h1>📧 Message Threat Analyzer</h1>
+
+<form method="POST">
+
+<div class="chain-box">
+<div class="inner-box">
+<textarea name="message" placeholder="Paste message here"></textarea>
+</div>
+</div>
+
+<br>
+
+<button type="submit">Analyze</button>
+
+</form>
+
+{% if data %}
+<div class="card">
+
+<p><strong>Status:</strong> {{ data.status }}</p>
+<p><strong>Risk:</strong> {{ data.risk }}%</p>
+
+{% if score %}
+<p><strong>Security Score:</strong> {{ score }}/100</p>
+{% endif %}
+
+{% if data.risk > 50 %}
+<p>🚨 This message looks dangerous. Avoid clicking links.</p>
+{% elif data.risk > 20 %}
+<p>⚠ Be cautious with this message.</p>
+{% else %}
+<p>✅ This message appears safe.</p>
+{% endif %}
+
+</div>
+{% endif %}
+
+</body>
+</html>

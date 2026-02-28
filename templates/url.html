@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>URL Threat Scanner</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #020617);
+    color: white;
+    text-align: center;
+}
+
+a {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+/* INPUT DESIGN */
+.chain-box {
+    display: inline-block;
+    padding: 6px;
+    margin-top: 60px;
+    background: repeating-linear-gradient(
+        45deg,
+        #64748b,
+        #64748b 6px,
+        #1e293b 6px,
+        #1e293b 12px
+    );
+    border-radius: 15px;
+}
+
+.inner-box {
+    background: #111827;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+input {
+    padding: 12px;
+    border: none;
+    width: 280px;
+    background: #1e293b;
+    color: white;
+    border-radius: 8px;
+}
+
+/* BUTTON */
+button {
+    padding: 10px 15px;
+    margin: 15px;
+    background: #0ea5e9;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0284c7;
+}
+
+/* RESULT CARD */
+.card {
+    background: #111827;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 12px;
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+ul {
+    padding-left: 20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<a href="/">⬅ Back</a>
+
+<h1>🌐 URL Threat Scanner</h1>
+
+<form method="POST">
+
+<div class="chain-box">
+<div class="inner-box">
+<input type="text" name="url" placeholder="Enter URL">
+</div>
+</div>
+
+<br>
+
+<button type="submit">Scan</button>
+
+</form>
+
+{% if data %}
+<div class="card">
+
+<p><strong>Status:</strong> {{ data.status }}</p>
+<p><strong>Domain:</strong> {{ data.domain }}</p>
+
+{% if score %}
+<p><strong>Security Score:</strong> {{ score }}/100</p>
+{% endif %}
+
+{% if data.issues %}
+<p><strong>⚠ Issues:</strong></p>
+<ul>
+{% for i in data.issues %}
+<li>{{ i }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if data.threats %}
+<p><strong>🚨 Threats:</strong></p>
+<ul>
+{% for t in data.threats %}
+<li>{{ t }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if not data.issues %}
+<p>🟢 This URL looks safe.</p>
+{% endif %}
+
+</div>
+{% endif %}
+
+</body>
+</html>

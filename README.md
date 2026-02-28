@@ -1,110 +1,69 @@
-<h1 align="center">🔐 Cyber Security Dashboard</h1>
+# 🔐 Cyber Security Dashboard
 
-<p align="center">
-A real-time web-based cybersecurity tool that analyzes passwords, URLs, and messages to evaluate digital safety.
-</p>
+A multi-functional cybersecurity web application built using **Python (Flask), HTML, and CSS**, designed to help users analyze and understand security risks in real-time.
 
----
-
-## 🧠 What is this Project?
-
-The **Cyber Security Dashboard** is a full-stack web application built using Flask that helps users understand how secure they are online.
-
-It allows users to:
-- 🔐 Analyze password strength  
-- ⏳ Estimate how long a password would take to crack  
-- 🌐 Check if a website is safe or suspicious  
-- 📧 Detect scam or phishing messages  
-- 🧠 Get an overall cybersecurity assessment  
-
-The goal of this project is to make cybersecurity **simple, interactive, and useful for everyone**, even non-technical users.
+This project focuses on practical, real-world cybersecurity scenarios such as password strength analysis, URL threat detection, and scam message identification — all presented with an interactive and user-friendly interface.
 
 ---
 
-## ✨ Features
+## 🚀 Features
 
-### 🔐 Password Analyzer
-- Evaluates password strength (Weak → Very Strong)  
-- Estimates **crack time** based on complexity  
-- Helps users understand password security  
-
----
-
-### 🌐 Advanced URL Analyzer
-This system goes beyond basic checks and analyzes:
-- HTTPS usage  
-- URL length  
-- Suspicious keywords  
-- IP-based URLs  
+### 🔐 Password Security Engine
+- Checks password strength (Weak → Very Strong)
+- Estimates realistic crack time (in seconds, minutes, hours, days, months, or years)
+- Suggests stronger password alternatives
+- Shows usability status (Safe / Risky / Not Safe)
+- Live typing strength feedback
+- Animated security score meter
 
 ---
 
-### 📧 Scam Message Detector
-- Detects phishing/scam patterns  
-- Uses keyword-based logic  
-- Classifies messages into:
-  - ✅ Safe  
-  - ⚠️ Suspicious  
-  - 🚨 High Risk  
+### 🌐 URL Threat Scanner
+- Detects suspicious or unsafe URLs
+- Identifies issues like:
+  - No HTTPS
+  - Suspicious keywords
+  - IP-based URLs
+- Provides possible threats (phishing, data interception, etc.)
+- Displays a security score
 
 ---
 
-### 🧠 Cyber Safety Evaluation
-- Combines all results  
-- Provides an overall risk understanding  
+### 📧 Message Threat Analyzer
+- Detects scam or phishing messages
+- Calculates risk percentage
+- Classifies messages as Safe / Suspicious / High Risk
+- Provides safety suggestions
 
 ---
 
-### 🎨 Interactive UI
-- Card-based layout  
-- Clean dark theme  
-- Hover effects  
-- Mobile responsive  
+## 🧠 Scoring System
+
+Each tool generates a **Security Score (0–100)** based on analysis:
+
+- Password → based on strength
+- URL → based on detected issues and threats
+- Message → based on scam risk percentage
 
 ---
 
-## 🚀 How I Built This Project
+## 🎨 UI & Experience
 
-### Step 1: Backend Setup
-- Created Flask application  
-- Handled routing and form data  
-
----
-
-### Step 2: Frontend Integration
-- Built UI using HTML & CSS  
-- Connected with Flask templates (Jinja)  
+- Multi-page structured interface
+- Cybersecurity-themed design
+- Chain-style input fields
+- Smooth animations and transitions
+- Live feedback while typing
+- Clean and minimal glow effects (not overdone)
 
 ---
 
-### Step 3: Feature Development
-- Password strength + crack time  
-- Advanced URL risk analysis  
-- Scam detection system  
+## 🛠️ Tech Stack
+
+- **Backend:** Python (Flask)
+- **Frontend:** HTML, CSS, JavaScript
+- **Libraries:** Flask (only lightweight dependency)
 
 ---
 
-### Step 4: Scoring Logic
-- Combined all outputs into a unified evaluation system  
-
----
-
-### Step 5: UI Enhancement
-- Designed card-based dashboard  
-- Improved interactivity  
-
----
-
-### Step 6: Deployment
-- Uploaded code to GitHub  
-- Deployed live using Render  
-
----
-
-## ⚠️ Challenges Faced
-
-### ❌ Git Push Errors
-- Error: `main -> main (fetch first)`  
-- Solution: Used  
-```bash
-git pull origin main --rebase
+## 📂 Project Structure
